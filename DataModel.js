@@ -13,6 +13,10 @@ class DataModel {
     this.asyncInit();
   }
 
+  getusersRef = () => {
+    return this.usersRef;
+  }
+
   createUser = async (email, pass, dispName) => {
     // assemble the data structure
     let newUser = {

@@ -106,12 +106,128 @@ export const loginStyles = StyleSheet.create({
 });
 
 export const homeStyles = StyleSheet.create({
-  container: {
+  main: {
+    backgroundColor: "white"
+  },
+  buttonContainer: {
     flex: 1,
-    // backgroundColor: '#fff',
-    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 100,
+    paddingBottom: 120,
+  },
+  button: {
+    width: 150,
+    height: 50,
+    borderColor: 'black',
+    flexDirection: "row",
+    borderRadius: 30,
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 20
+    backgroundColor: 'navy',
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 }
   },
+  buttonText: {
+    color: 'white',
+    fontWeight: "bold"
+  },
+  addContainer:{
+    justifyContent:"center",
+    alignItems:"center",
+    paddingTop: 40
+  },
+  addButtonText: {
+    color: 'black',
+    fontWeight: "bold",
+    fontSize:15
+  },
+  addExerciseButton: {
+    width: 100,
+    height: 50,
+    borderColor: 'black',
+    flexDirection: "row",
+    borderRadius: 30,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent:"center",
+    backgroundColor: 'lightgreen',
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 }
+  },
+  listItemContainerBody:{
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
+      borderRadius:100,
+      zIndex: 3, // works on ios
+      backgroundColor:'white'
+  },
+  listItemTextContainer: {
+      padding: 15,
+      flex: 0.8,
+      flexDirection: 'row',
+      borderRadius:20,
+      justifyContent: "space-between",
+      alignItems:"center",
+  },
+  exerciseNameContainer: {
+    // backgroundColor:"red",
+    flex: 1 
+  },
+
+  listItemText: {
+    fontSize: 18,
+  },
+  repsContainer: {
+    flexDirection:"column",
+    // backgroundColor:"lightblue",
+    alignItems:"center"
+  },
+  listItemText2: {
+        paddingRight: 10,
+        fontSize: 18,
+
+  },
+  repText:{
+
+  },
+  //uche
+  listItemButtonContainer: {
+    flex: 0.2,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingRight:20,
+    // backgroundColor:"green",
+    margin:"auto"
+  },
+  corpusContainer: {
+    margin: 20,
+    borderRadius: 10,
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 },
+    backgroundColor:"white",
+    borderColor:"black",
+    borderWidth:1,
+    zIndex: 2, // works on ios
+  },
+  listTitleBody:{
+    padding: 10,
+    justifyContent:"center",
+    alignItems: "center",
+    borderRadius:30,
+    borderColor:"black"
+  },
+  listTitleText: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  beholdItemContainerBody: {
+  }
 });
