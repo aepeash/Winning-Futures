@@ -177,21 +177,16 @@ export class HomeScreen extends React.Component {
                               Next Session:
                           </Text>
                           <Text style={homeStyles.textRegular}>
-                            {item.nextsession}
+                            {/* {item.session} */}
                           </Text>
-                            <FlatList
-                            // try to think of logic if user doesn't have any circuits
-                              data={item.exercises}
-                              renderItem={({item})=>{
-                                return(
-                                  <View style = {homeStyles.exlistContainer}>
-                                    <Text style = {homeStyles.exlistItem}>
-                                    - {item}
-                                    </Text>
-                                  </View>
-                                  );
-                                }}
-                              />
+                        </View>
+                        <View style = {homeStyles.textColumn}> 
+                          <Text style={homeStyles.textBold}>
+                              Info:
+                          </Text>
+                          <Text style={homeStyles.textRegular}>
+                            {/* {item.session} */}
+                          </Text>
                         </View>
                       </TouchableOpacity>
                     </View>
