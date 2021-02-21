@@ -137,7 +137,13 @@ export class HomeScreen extends React.Component {
       item: item,
     });
   }
-
+  // have to find the student object by name
+  onStudentPress = (currentStudent) => {
+    this.props.navigation.navigate("Student", {
+      currentUser: this.self,
+      student: currentStudent
+    });
+  }
 
   render() {
       if (this.state.studentList.length > 0) {
@@ -148,6 +154,8 @@ export class HomeScreen extends React.Component {
                 renderItem={({item})=>{
                   return(
                     <View style={homeStyles.list}>
+                      <TouchableOpacity 
+                        onPress={()=>{this.onStudentPress(item.student.name)}}>
                         <View style = {homeStyles.textRowTop}> 
                           <Text style={homeStyles.textBold}>
                              Name:
@@ -185,7 +193,8 @@ export class HomeScreen extends React.Component {
                                 }}
                               />
                         </View>
-                      </View>
+                      </TouchableOpacity>
+                    </View>
                   );
                 }}
               />
