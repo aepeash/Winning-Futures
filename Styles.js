@@ -106,128 +106,112 @@ export const loginStyles = StyleSheet.create({
 });
 
 export const homeStyles = StyleSheet.create({
-  main: {
-    backgroundColor: "white"
-  },
-  buttonContainer: {
+  textContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: 100,
-    paddingBottom: 120,
-  },
-  button: {
-    width: 150,
-    height: 50,
-    borderColor: 'black',
-    flexDirection: "row",
-    borderRadius: 30,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'navy',
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 }
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: "bold"
-  },
-  addContainer:{
-    justifyContent:"center",
-    alignItems:"center",
-    paddingTop: 40
-  },
-  addButtonText: {
-    color: 'black',
-    fontWeight: "bold",
-    fontSize:15
-  },
-  addExerciseButton: {
-    width: 100,
-    height: 50,
-    borderColor: 'black',
-    flexDirection: "row",
-    borderRadius: 30,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent:"center",
-    backgroundColor: 'lightgreen',
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 }
-  },
-  listItemContainerBody:{
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 10,
-      borderRadius:100,
-      zIndex: 3, // works on ios
-      backgroundColor:'white'
-  },
-  listItemTextContainer: {
-      padding: 15,
-      flex: 0.8,
-      flexDirection: 'row',
-      borderRadius:20,
-      justifyContent: "space-between",
-      alignItems:"center",
-  },
-  exerciseNameContainer: {
-    // backgroundColor:"red",
-    flex: 1 
-  },
-
-  listItemText: {
-    fontSize: 18,
-  },
-  repsContainer: {
-    flexDirection:"column",
-    // backgroundColor:"lightblue",
-    alignItems:"center"
-  },
-  listItemText2: {
-        paddingRight: 10,
-        fontSize: 18,
-
-  },
-  repText:{
-
-  },
-  //uche
-  listItemButtonContainer: {
-    flex: 0.2,
-    flexDirection: 'row',
     justifyContent: 'flex-start',
-    paddingRight:20,
-    // backgroundColor:"green",
-    margin:"auto"
-  },
-  corpusContainer: {
+    paddingTop: 20,
     margin: 20,
     borderRadius: 10,
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 3 },
+    backgroundColor:"white"
+  },
+  textContainerNoList: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 200,
+    paddingBottom: 200,
+  },
+  textBold: {
+    fontSize: 20,
+    fontWeight:"bold"
+  },
+  textRegular: {
+    paddingLeft: 10,
+    fontSize: 20,
+    fontWeight: "500",
+    alignSelf: "flex-start"
+  },
+  energetic: {
+    backgroundColor: '#87ed80',
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 30,
+    // backgroundColor:"white",
+    padding: 10,
+    paddingLeft: 15,
+    margin: 15,
+    paddingBottom: 20,
     shadowOpacity: 1,
     shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 },
-    backgroundColor:"white",
-    borderColor:"black",
-    borderWidth:1,
-    zIndex: 2, // works on ios
+    shadowOffset: { width: 2, height: 5 }
   },
-  listTitleBody:{
+  content: {
+    backgroundColor: '#fffd82',
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 30,
+    // backgroundColor:"white",
     padding: 10,
-    justifyContent:"center",
-    alignItems: "center",
-    borderRadius:30,
-    borderColor:"black"
+    paddingLeft: 15,
+    margin: 15,
+    paddingBottom: 20,
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 }
   },
-  listTitleText: {
-    fontSize: 20,
-    fontWeight: 'bold'
+  tired: {
+    backgroundColor: '#fc7474',
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 30,
+    // backgroundColor:"white",
+    padding: 10,
+    paddingLeft: 15,
+    margin: 15,
+    paddingBottom: 20,
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 }
   },
-  beholdItemContainerBody: {
+  list: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 30,
+    backgroundColor:"white",
+    padding: 10,
+    paddingLeft: 15,
+    margin: 15,
+    paddingBottom: 20,
+    shadowOpacity: 1,
+    shadowRadius: 0,
+    shadowOffset: { width: 2, height: 5 }
+  },
+
+  textRow: {
+    flexDirection: "row"
+  },
+
+  textColumn: {
+    flexDirection: "column"
+  },
+  textRowTop: {
+    flexDirection: "row",
+  },
+  deleteContainer:{
+    left: 220
+  },
+  exlistItem: {
+    fontWeight: "400"
+  },
+  exlistContainer: {
+    padding: 5
   }
 });

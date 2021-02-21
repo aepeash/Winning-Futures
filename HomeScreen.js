@@ -140,79 +140,64 @@ export class HomeScreen extends React.Component {
 
 
   render() {
-    let clickToAdd;
-    let studentList = this.state.studentList;
-    if (!studentList.length) {
-      clickToAdd=
-      <View style={{alignItems: "center", backgroundColor:"white"}}>
-        <Text style={{fontSize: 20}}>Nothing to display</Text>
-        <Text style={{fontSize: 20}}>Click "+" to add more students!</Text>
-      </View>
-    };
+      if (this.state.studentList.length > 0) {
+        return (
+              <FlatList
+              // try to think of logic if user doesn't have any circuits
+                data={this.state.studentList ? this.state.studentList : []}
+                renderItem={({item})=>{
+                  return(
+                    <View style={homeStyles.list}>
+                        <View style = {homeStyles.textRowTop}> 
+                          <Text style={homeStyles.textBold}>
+                             Name:
+                          </Text>
+                          <Text style={homeStyles.textRegular}>
+                            {item.name}
+                          </Text>
+                        </View> 
+                        <View style = {homeStyles.textRow}> 
+                          <Text style={homeStyles.textBold}>
+                              School: 
+                          </Text>
+                          <Text style={homeStyles.textRegular}>
+                            {item.school}
+                          </Text>
+                        </View>  
+                        <View style = {homeStyles.textColumn}> 
+                          <Text style={homeStyles.textBold}>
+                              Next Session:
+                          </Text>
+                          <Text style={homeStyles.textRegular}>
+                            {item.nextsession}
+                          </Text>
+                            <FlatList
+                            // try to think of logic if user doesn't have any circuits
+                              data={item.exercises}
+                              renderItem={({item})=>{
+                                return(
+                                  <View style = {homeStyles.exlistContainer}>
+                                    <Text style = {homeStyles.exlistItem}>
+                                    - {item}
+                                    </Text>
+                                  </View>
+                                  );
+                                }}
+                              />
+                        </View>
+                      </View>
+                  );
+                }}
+              />
+  
+        )
+    }
+    else {
       return (
-        <View style = {homeStyles.main}>
-            <View style = {homeStyles.corpusContainer}>
-              <View style = {homeStyles.listTitleBody}>
-                <Text style = {homeStyles.listTitleText}>All Students</Text>
-                {clickToAdd}
-              </View>
-                  <FlatList
-                        // filter upon the mood we are currently in
-                        data={studentList}
-                        // ItemSeparatorComponent={()=>(
-                        //   <View style={homeStyles.separator}
-                        //   />
-                        // )}
-                        renderItem={({item})=>{
-                          return(
-                            <View style={homeStyles.listItemContainerBody}>
-                              <View style={homeStyles.listItemTextContainer}> 
-                                <View style={homeStyles.listItemButtonContainer}>
-                                  <Ionicons name= "close-outline"
-                                    size={24} 
-                                    color={"red"}
-                                    onPress={()=>{this.onDelete(item)}} />
-                                </View>
-                                <View style = {homeStyles.exerciseNameContainer}>
-                                  <Text style={homeStyles.listItemText}
-                                    onPress = {()=>{this.onEdit(item)}} >
-                                    
-                                  </Text> 
-                                </View>
-                                <View style = {homeStyles.repsContainer}>
-                                  <Text style={homeStyles.listItemText2}
-                                    onPress = {()=>{this.onEdit(item)}} >
-                                    
-                                  </Text> 
-                                </View>
-                              </View>
-                            </View>
-                          );
-                        }}
-                      />
-              </View>
-            <View style = {homeStyles.addContainer}>
-                  <TouchableOpacity 
-                      style = {homeStyles.addExerciseButton}
-                      onPress={()=>{
-                        this.props.navigation.navigate("Item", {
-                          operation: "add",
-                          mood: this.mood,
-                          currentUser: this.self
-                        });
-                      }} >
-                      <Text style = {homeStyles.addButtonText}>+</Text>
-                  </TouchableOpacity>
-            </View>
-
-              <View style={homeStyles.buttonContainer}>
-                  <TouchableOpacity 
-                      style={homeStyles.button}
-                      onPress={this.onGenerate}>
-                      <Text style={homeStyles.buttonText}>Generate</Text>
-                  </TouchableOpacity>
-              </View>
+        <View style={homeStyles.textContainerNoList}>
+          <Text style={homeStyles.text}>No Students</Text>
         </View>
       )
+    }
   }
 }
