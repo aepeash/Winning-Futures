@@ -157,16 +157,14 @@ export class HomeScreen extends React.Component {
                       <TouchableOpacity 
                         onPress={()=>{this.onStudentPress(item.name)}}>
                         <View style = {homeStyles.textRowTop}> 
-                          <Text style={homeStyles.textBold}>
-                             Name:
-                          </Text>
-                          <Text style={homeStyles.textRegular}>
+                          
+                          <Text style={homeStyles.nameText}>
                             {item.name}
                           </Text>
                         </View> 
                         <View style = {homeStyles.textRow}> 
                           <Text style={homeStyles.textBold}>
-                              School: 
+                            School: 
                           </Text>
                           <Text style={homeStyles.textRegular}>
                             {item.school}

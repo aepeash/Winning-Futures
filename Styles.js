@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const colors = {
-  primary: '#7986CB', // MD Amber 500
+  primary: '#2643BE', // WF Blue
   primaryDark: '#303F9F', // MD Brown 300
   primaryLight: '#E8EAF6', // MD Amber 200
   outline: '#BDBDBD' // MD Gray 400
@@ -67,32 +67,32 @@ export const loginStyles = StyleSheet.create({
 
       },
         buttonContainer: {
-          width: 150,
-          height: 50,
+          width: 144,
+          height: 42,
           borderColor: 'black',
           flexDirection: "row",
-          borderRadius: 40,
-          borderWidth: 1,
+          borderRadius: 10,
+          // borderWidth: 1,
           alignItems: 'center',
           justifyContent:"center",
-          backgroundColor: '#87ed80',
-          shadowOpacity: 1,
-          shadowRadius: 0,
+          backgroundColor: '#2643BE',
+          // shadowOpacity: 1,
+          // shadowRadius: 0,
           shadowOffset: { width: 2, height: 5 },
           margin: "auto"
         },
         buttonContainer2: {
-          width: 170,
-          height: 50,
+          width: 144,
+          height: 42,
           borderColor: 'black',
           flexDirection: "row",
-          borderRadius: 40,
-          borderWidth: 1,
+          borderRadius: 10,
+          // borderWidth: 1,s
           alignItems: 'center',
           justifyContent:"center",
-          backgroundColor: 'pink',
-          shadowOpacity: 1,
-          shadowRadius: 0,
+          backgroundColor: '#2643BE',
+          // shadowOpacity: 1,
+          // shadowRadius: 0,
           shadowOffset: { width: 2, height: 5 },
           margin: "auto"
         },
@@ -100,7 +100,7 @@ export const loginStyles = StyleSheet.create({
           buttonText: {
             textAlign: 'center',
             fontSize: 18,
-            color: 'black',
+            color: 'white',
             fontWeight:"bold",
           }
 });
@@ -134,6 +134,13 @@ export const homeStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
     alignSelf: "flex-start"
+  },
+  nameText: {
+    // paddingLeft: 10,
+    fontSize: 30,
+    fontWeight: "500",
+    alignSelf: "flex-start",
+    paddingBottom: 10
   },
   energetic: {
     backgroundColor: '#87ed80',
@@ -182,16 +189,17 @@ export const homeStyles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    borderWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: "blue",
     borderColor: "black",
-    borderRadius: 30,
+    // borderRadius: 30,
     backgroundColor:"white",
     padding: 10,
     paddingLeft: 15,
     margin: 15,
     paddingBottom: 20,
-    shadowOpacity: 1,
-    shadowRadius: 0,
+    // shadowOpacity: 1,
+    // shadowRadius: 0,
     shadowOffset: { width: 2, height: 5 }
   },
 
