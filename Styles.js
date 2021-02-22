@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+// import { Dimensions } from 'react-native';
 
 export const colors = {
   primary: '#2643BE', // WF Blue
@@ -6,6 +7,8 @@ export const colors = {
   primaryLight: '#E8EAF6', // MD Amber 200
   outline: '#BDBDBD' // MD Gray 400
 }
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export const loginStyles = StyleSheet.create({
   container: {
@@ -106,6 +109,38 @@ export const loginStyles = StyleSheet.create({
 });
 
 export const homeStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    // backgroundColor: 'yellow',
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 20
+  },
+  headerContainer: {
+    flex: 0.1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    width: '100%',
+    padding: 10,
+    paddingLeft: 25,
+    // backgroundColor: "#BDC6EB",
+    height: windowHeight / 1.7,
+    
+  },
+  listContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start', // this turns out to be important!
+    padding: 15,
+    // backgroundColor: 'pink',
+    width: "100%",
+  },
+  headerText: {
+    fontSize: 50,
+    fontWeight: "500",
+  },
   textContainer: {
     flex: 1,
     alignItems: 'center',
@@ -126,80 +161,38 @@ export const homeStyles = StyleSheet.create({
     paddingBottom: 200,
   },
   textBold: {
-    fontSize: 20,
-    fontWeight:"bold"
+    fontSize: 15,
+    fontWeight:"bold",
+    color: "#272727"
   },
   textRegular: {
     paddingLeft: 10,
-    fontSize: 20,
-    fontWeight: "500",
+    fontSize: 15,
+    fontWeight: "400",
     alignSelf: "flex-start"
   },
   nameText: {
     // paddingLeft: 10,
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "500",
     alignSelf: "flex-start",
-    paddingBottom: 10
-  },
-  energetic: {
-    backgroundColor: '#87ed80',
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 30,
-    // backgroundColor:"white",
-    padding: 10,
-    paddingLeft: 15,
-    margin: 15,
-    paddingBottom: 20,
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 }
-  },
-  content: {
-    backgroundColor: '#fffd82',
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 30,
-    // backgroundColor:"white",
-    padding: 10,
-    paddingLeft: 15,
-    margin: 15,
-    paddingBottom: 20,
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 }
-  },
-  tired: {
-    backgroundColor: '#fc7474',
-    flex: 1,
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 30,
-    // backgroundColor:"white",
-    padding: 10,
-    paddingLeft: 15,
-    margin: 15,
-    paddingBottom: 20,
-    shadowOpacity: 1,
-    shadowRadius: 0,
-    shadowOffset: { width: 2, height: 5 }
+    paddingBottom: 10,
+    color: "#272727"
   },
   list: {
     flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: "blue",
+    borderLeftWidth: 3,
+    borderLeftColor: colors.primary,
     borderColor: "black",
-    // borderRadius: 30,
+    borderRadius: 2,
     backgroundColor:"white",
     padding: 10,
     paddingLeft: 15,
-    margin: 15,
-    paddingBottom: 20,
-    // shadowOpacity: 1,
-    // shadowRadius: 0,
+    margin: 10,
+    paddingBottom: 10,
+    // width: "95%",
+    shadowOpacity: .2,
+    shadowRadius: 4,
     shadowOffset: { width: 2, height: 5 }
   },
 

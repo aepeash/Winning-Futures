@@ -19,6 +19,7 @@ export class HomeScreen extends React.Component {
   componentDidMount() {
     this.getInventory();
     this.focusUnsubscribe = this.props.navigation.addListener('focus', this.onFocus);
+    console.log(this.self.displayName)
   }
 
   componentWillUnmount() {
@@ -148,8 +149,18 @@ export class HomeScreen extends React.Component {
   render() {
       if (this.state.studentList.length > 0) {
         return (
+          <View style = {homeStyles.container}>
+            <View style = {homeStyles.headerContainer}>
+              <Text style = {{fontSize: 30, color: "#667BD1" }}>Welcome back, {this.self.displayName}</Text>
+            </View>
+            <View style = {homeStyles.listContainer}>
               <FlatList
               // try to think of logic if user doesn't have any circuits
+              // ItemSeparatorComponent={()=>{
+              //   return (
+              //     <View style={homeStyles.separator}/>
+              //   );
+              // }}
                 data={this.state.studentList ? this.state.studentList : []}
                 renderItem={({item})=>{
                   return(
@@ -191,6 +202,8 @@ export class HomeScreen extends React.Component {
                   );
                 }}
               />
+            </View>
+          </View>
   
         )
     }
