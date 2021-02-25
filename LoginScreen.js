@@ -82,6 +82,16 @@ export class LoginScreen extends React.Component {
         behavior={"height"}
         keyboardVerticalOffset={10}>
         <View style={loginStyles.topView}>
+
+      
+        <TouchableOpacity 
+              style={loginStyles.buttonContainerTEST}
+              onPress={()=>this.props.navigation.navigate('Survey')}
+              >
+              <Text style={loginStyles.buttonTextTEST}>Test Nav</Text>
+            </TouchableOpacity>
+
+
           <Image 
             source={require('./assets/mentorship.png')}
             style={loginStyles.logoImage}
@@ -160,7 +170,7 @@ export class LoginScreen extends React.Component {
                 this.setState({mode: 'create'})
               }}
               >
-              <Text style={loginStyles.buttonText}>Create Account</Text>
+              <Text style={loginStyles.buttonText}>Register</Text>
             </TouchableOpacity>
           </View>
 

@@ -51,7 +51,8 @@ export const loginStyles = StyleSheet.create({
           justifyContent: 'flex-end',
           paddingRight: 5,
           textAlign: 'right',
-          fontSize: 10
+          fontSize: 18,
+          
         },
         inputText: {
           flex: 0.5,
@@ -70,11 +71,11 @@ export const loginStyles = StyleSheet.create({
 
       },
         buttonContainer: {
-          width: 144,
-          height: 42,
+          width: 140,
+          height: 40,
           borderColor: 'black',
           flexDirection: "row",
-          borderRadius: 10,
+          borderRadius: 6,
           // borderWidth: 1,
           alignItems: 'center',
           justifyContent:"center",
@@ -105,6 +106,27 @@ export const loginStyles = StyleSheet.create({
             fontSize: 18,
             color: 'white',
             fontWeight:"bold",
+          },
+
+          // TO BE DELETED: 
+          buttonContainerTEST: {
+            width: 140,
+            height: 40,
+            flexDirection: "row",
+            alignItems: 'center',
+            justifyContent:"center",
+            backgroundColor: 'white',
+            shadowOffset: { width: 2, height: 5 },
+            margin: "auto"
+
+
+          },
+
+          buttonTextTEST: {
+            textAlign: 'center',
+            fontSize: 14,
+            color: '#B7B7B7',
+
           }
 });
 
@@ -216,3 +238,119 @@ export const homeStyles = StyleSheet.create({
     padding: 5
   }
 });
+
+
+
+export const SurveyStyles = StyleSheet.create({
+
+  mainContainer: {
+    backgroundColor: 'white',
+    flexDirection: 'column',
+    paddingLeft: 20,
+    paddingRight: 20,
+  
+
+  },
+
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    //backgroundColor: 'black',
+    width: '100%',
+    paddingBottom: 22,
+  },
+
+  title:{
+    fontSize: 32,
+    paddingTop: 42,
+  },
+
+  questionsText: {
+    fontSize: 16,
+    paddingTop: 42,
+
+  },
+
+  questionPicker: {
+    zIndex: 10,
+    marginTop: 10,
+  },
+
+  questionPicker2: {
+    marginTop: 10,
+    marginBottom: 30,
+
+  },
+
+  name:{
+    fontSize: 20,
+    marginLeft: 8,
+
+   
+  },
+
+  blueContainer:{
+    backgroundColor: '#E9ECF9',
+    marginTop: 30,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 10,
+  },
+
+  studentName: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+
+  dropDownContainer: {
+    marginTop:10,
+  },
+
+ 
+
+radioElement:{
+  flexDirection: 'row',
+  backgroundColor: 'white',
+  alignItems: 'center',
+  marginTop: 15,
+},
+
+inputContainer: {
+  marginTop: 10,
+  backgroundColor: 'white',
+  height: 38,
+
+},
+
+buttonEnd: {
+  marginTop: 25,
+  paddingBottom: 42,
+},
+
+buttonContainerSurv: {
+height: 44,
+flexDirection: "row",
+justifyContent: 'center',
+borderRadius: 10,
+// borderWidth: 1,s
+alignItems: 'center',
+backgroundColor: '#2643BE',
+// shadowOpacity: 1,
+// shadowRadius: 0,
+shadowOffset: { width: 2, height: 5 },
+margin: "auto",
+},
+
+buttonText: {
+  alignItems: 'center',
+  textAlign: 'center',
+  fontSize: 18,
+  color: 'white',
+  fontWeight:"bold",
+}
+
+
+  });
