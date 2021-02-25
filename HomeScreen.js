@@ -140,7 +140,7 @@ export class HomeScreen extends React.Component {
   }
   // have to find the student object by name
   onStudentPress = (currentStudent) => {
-    this.props.navigation.navigate("Student", {
+    this.props.navigation.navigate("Survey", {
       currentUser: this.self,
       student: currentStudent
     });
