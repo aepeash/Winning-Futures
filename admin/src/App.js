@@ -1,16 +1,21 @@
 import React from "react";
-
 import Firebase from "firebase";
-import config from "./secrets";
+import config from "./config";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    Firebase.initializeApp(config);
-
+    // Firebase.initializeApp(config.firebase);
+    if (!Firebase.apps.length) {
+      Firebase.initializeApp(config);
+   }else {
+      Firebase.app(); // if already initialized, use that one
+   }
+    this.usersRef = Firebase.firestore().collection('admins');
     this.state = {
       developers: []
     };
+
   }
 
   componentDidMount() {
@@ -24,17 +29,22 @@ class App extends React.Component {
   }
 
   writeUserData = () => {
-    Firebase.database()
-        .ref("/")
-        .set(this.state);
+    this.usersRef
+      .add(this.state);
     console.log("DATA SAVED");
   };
 
-  getUserData = () => {
-    let ref = Firebase.database().ref("/");
-    ref.on("value", snapshot => {
-      const state = snapshot.val();
-      this.setState(state);
+  getUserData = async () => {
+    // let ref = this.usersRef.get();
+    let querySnap = await this.usersRef.get();
+    querySnap.forEach(qDocSnap => {
+      let key = qDocSnap.id;
+      let data = qDocSnap.data();
+      data.key = key;
+      this.setState(data);
+    // ref.on("value", snapshot => {
+    //   const state = snapshot.val();
+    //   this.setState(state);
     });
   };
 
@@ -81,80 +91,84 @@ class App extends React.Component {
   render() {
     const { developers } = this.state;
     return (
-        <React.Fragment>
-          <h1>Hello World</h1>
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-12">
-                <h1>Firebase Development Team</h1>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xl-12">
-                {developers.map(developer => (
-                    <div
-                        key={developer.uid}
-                        className="card float-left"
-                        style={{ width: "18rem", marginRight: "1rem" }}
-                    >
-                      <div className="card-body">
-                        <h5 className="card-title">{developer.name}</h5>
-                        <p className="card-text">{developer.role}</p>
-                        <button
-                            onClick={() => this.removeData(developer)}
-                            className="btn btn-link"
-                        >
-                          Delete
-                        </button>
-                        <button
-                            onClick={() => this.updateData(developer)}
-                            className="btn btn-link"
-                        >
-                          Edit
-                        </button>
-                      </div>
-                    </div>
-                ))}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xl-12">
-                <h1>Add new team member here</h1>
-                <form onSubmit={this.handleSubmit}>
-                  <div className="form-row">
-                    <input type="hidden" ref="uid" />
-                    <div className="form-group col-md-6">
-                      <label>Name</label>
-                      <input
-                          type="text"
-                          ref="name"
-                          className="form-control"
-                          placeholder="Name"
-                      />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label>Role</label>
-                      <input
-                          type="text"
-                          ref="role"
-                          className="form-control"
-                          placeholder="Role"
-                      />
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary">
-                    Save
-                  </button>
-                </form>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xl-12">
-
-              </div>
+      <React.Fragment>
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-12">
+              <h1>Firebase Development Team</h1>
             </div>
           </div>
-        </React.Fragment>
+          <div className="row">
+            <div className="col-xl-12">
+              {developers.map(developer => (
+                <div
+                  key={developer.uid}
+                  className="card float-left"
+                  style={{ width: "18rem", marginRight: "1rem" }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">{developer.name}</h5>
+                    <p className="card-text">{developer.role}</p>
+                    <button
+                      onClick={() => this.removeData(developer)}
+                      className="btn btn-link"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => this.updateData(developer)}
+                      className="btn btn-link"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xl-12">
+              <h1>Add new team member here</h1>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-row">
+                  <input type="hidden" ref="uid" />
+                  <div className="form-group col-md-6">
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      ref="name"
+                      className="form-control"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>Role</label>
+                    <input
+                      type="text"
+                      ref="role"
+                      className="form-control"
+                      placeholder="Role"
+                    />
+                  </div>
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-xl-12">
+              <h3>
+                Tutorial{" "}
+                <a href="https://sebhastian.com/react-firebase-real-time-database-guide">
+                  here
+                </a>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
