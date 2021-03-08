@@ -20,6 +20,7 @@ export class AddMentors extends React.Component {
       Firebase.app(); // if already initialized, use that one
    }
     this.usersRef = Firebase.firestore().collection('admins');
+    this.mentors = []
     this.state = {
       developers: []
     };
@@ -27,19 +28,32 @@ export class AddMentors extends React.Component {
   }
 
   componentDidMount() {
+    console.log("umm tf is this called?", this.mentors);
+
     this.getUserData();
+    console.log("umm tf is this called?", this.mentors);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state) {
-      this.writeUserData();
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState !== this.state) {
+  //     this.getUserData();
+  //   }
+  // }
+
+  writeUserData = async (uid, name, role) => {
+    let newUser = {
+      uid: uid,
+      name: name,
+      role: role
     }
-  }
-
-  writeUserData = () => {
-    this.usersRef
-      .add(this.state);
-    console.log("DATA SAVED");
+    let newUserDocRef = await this.usersRef.add(newUser);
+    // this.usersRef
+    //   .add(this.state);
+    let key = newUserDocRef.id;
+    newUser.key = key;
+    this.mentors.push(newUser);
+    this.setState({developers: newUser});
+    console.log(newUserDocRef);
   };
 
   getUserData = async () => {
@@ -49,11 +63,15 @@ export class AddMentors extends React.Component {
       let key = qDocSnap.id;
       let data = qDocSnap.data();
       data.key = key;
-      this.setState(data);
+      this.mentors.push(data);
+      this.setState({developers: data});
+    })
+    console.log("getuser data", this.mentors);
+
     // ref.on("value", snapshot => {
     //   const state = snapshot.val();
     //   this.setState(state);
-    });
+    // });
   };
 
   handleSubmit = event => {
@@ -63,23 +81,27 @@ export class AddMentors extends React.Component {
     let uid = this.refs.uid.value;
 
     if (uid && name && role) {
-      const { developers } = this.state;
-      const devIndex = developers.findIndex(data => {
+      // const { developers } = this.state;
+      const devIndex = this.mentors.findIndex(data => {
         return data.uid === uid;
       });
-      developers[devIndex].name = name;
-      developers[devIndex].role = role;
-      this.setState({ developers });
+      this.mentors[devIndex].name = name;
+      this.mentors[devIndex].role = role;
+      this.setState({ developers: this.mentors });
     } else if (name && role) {
       const uid = new Date().getTime().toString();
-      const { developers } = this.state;
-      developers.push({ uid, name, role });
-      this.setState({ developers });
+      this.writeUserData(uid, name, role);
+      console.log("submitted", uid, name, role);
+      // const { developers } = this.state;
+      // this.mentors.push({ uid, name, role });
+      // this.setState({ developers: this.mentors });
     }
 
     this.refs.name.value = "";
     this.refs.role.value = "";
     this.refs.uid.value = "";
+
+
   };
 
   removeData = developer => {
@@ -98,6 +120,7 @@ export class AddMentors extends React.Component {
 
   render() {
     const { developers } = this.state;
+    console.log("hello render", developers);
     return (
      
       <React.Fragment>
@@ -110,8 +133,10 @@ export class AddMentors extends React.Component {
           </div>
           <div className="row">
             <div className="col-xl-12">
-              {developers.map(developer => (
+              {this.mentors.map(developer => (
+                <>
                 <div
+                //key not needed with react.fragment
                   key={developer.uid}
                   className="card float-left"
                   style={{ width: "18rem", marginRight: "1rem" }}
@@ -133,6 +158,7 @@ export class AddMentors extends React.Component {
                     </button>
                   </div>
                 </div>
+                </>
               ))}
             </div>
           </div>
