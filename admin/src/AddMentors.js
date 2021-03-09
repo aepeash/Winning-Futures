@@ -86,10 +86,10 @@ export class AddMentors extends React.Component {
     removeData = developer => {
         const { developers } = this.state;
         const newState = developers.filter(data => {
-           return data.displayName !== developer.displayName;
+            return data.displayName !== developer.displayName;
         });
         this.setState({ developers: newState });
-     };
+    };
 
     updateData = developer => {
         this.refs.displayName.value = developer.displayName;
@@ -124,7 +124,7 @@ export class AddMentors extends React.Component {
                                             <h5 className="card-title" >Name: {developer.displayName}</h5>
                                             <h5 className="card-title">Email: {developer.email}</h5>
                                             {/*<p className="card-text">{developer.password}</p>*/}
-                                           {/* <button
+                                            {/* <button
                                                 onClick={() => this.removeData(developer)}
                                                 className="btn btn-link"
                                             >
