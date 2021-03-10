@@ -33,7 +33,7 @@ export class Students extends React.Component {
   componentDidMount() {
     console.log("umm tf is this called?", this.students);
 
-    // this.getUserData();
+    this.getUserData();
     console.log("umm tf is this called?", this.students);
   }
 
@@ -64,16 +64,10 @@ export class Students extends React.Component {
       mentor: mentor
     }
     console.log("students", this.students)
-    // if doc exists
-    // if (this.state.developers) {
-    //   console.log("mentor has a student list before :)");
-    //   sublistRef = await this.usersRef.doc(thementor.key);
-    // }
-    // create new doc
-    // else {
-      sublistRef = await this.usersRef.doc(thementor[0].key);
-      console.log("new student doc", thementor.key);
-    // }
+
+    sublistRef = await this.usersRef.doc(thementor[0].key);
+    console.log("new student doc", thementor.key);
+
 
     console.log("hello mentor writeuserdata", thementor)
     let newUserDocRef = await sublistRef.collection("students").add(newUser);
@@ -86,20 +80,33 @@ export class Students extends React.Component {
 
   getUserData = async () => {
     // let ref = this.usersRef.get();
+    console.log("menotrs", this.mentors);
     let querySnap = await this.usersRef.get();
+    let keys = []
     querySnap.forEach(qDocSnap => {
+      // console.log("each", this.userRef.doc(qDocSnap.id).collection("students").get())
       let key = qDocSnap.id;
-      let data = qDocSnap.data();
-      data.key = key;
-      this.students.push(data);
-      this.setState({developers: data});
+      keys.push(key);
+      // let sublist = await this.usersRef.doc(qDocSnap.id).collection("students").get();
+      // console.log("subb", sublist);
     })
-    console.log("getuser data", this.students);
+    for (var i = 0; i < keys.length; i++) {
+      // console.log("key,", keys[i])
+      let sublist = await this.usersRef.doc(keys[i]).collection("students").get()
+      sublist.forEach(qDocSnap => {
+        let data = qDocSnap.data();
+        let key = qDocSnap.id;
+        data.key = key;
+        this.students.push(data);
+        this.setState({developers: data});
+      })
+      // console.log("subb",sublist)
+    }
+      // let data = qDocSnap.data();
 
-    // ref.on("value", snapshot => {
-    //   const state = snapshot.val();
-    //   this.setState(state);
-    // });
+    // })
+    // console.log("getuser data", this.students);
+
   };
 
   handleSubmit = event => {
@@ -176,10 +183,10 @@ export class Students extends React.Component {
                   style={{ width: "18rem", marginRight: "1rem" }}
                 >
                   <div className="card-body">
-                    <h5 className="card-title">{developer.name}</h5>
-                    <h5 className="card-title">{developer.school}</h5>
-                    <h5 className="card-title">{developer.session}</h5>
-                    <p className="card-text">{developer.mentor}</p>
+                    <h5 className="card-title">Name: {developer.name}</h5>
+                    <h5 className="card-title">School: {developer.school}</h5>
+                    <h5 className="card-title">Session: {developer.session}</h5>
+                    <p className="card-text">Mentor: {developer.mentor}</p>
                     <button
                       onClick={() => this.removeData(developer)}
                       className="btn btn-link"
